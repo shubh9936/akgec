@@ -1,0 +1,26 @@
+int main()
+{
+    int rows = 5,i,j,k,space;
+    for (i = 1; i <= rows; ++i, k = 0) {
+      for (space = 1; space <= rows - i; ++space) {
+         cout << "  ";
+      }
+      while (k != 2 * i - 1) {
+         cout << "* ";
+         ++k;
+      }
+      cout << "\n";
+   }
+   
+   for (i = rows-1; i >= 1; --i) {
+      for (space = 0; space < rows - i; ++space)
+         cout << "  ";
+      for (j = i; j <= 2 * i - 1; ++j)
+         cout << "* ";
+      for (j = 0; j < i - 1; ++j)
+         cout << "* ";
+      cout << "\n";
+   }
+
+return 0;
+}
