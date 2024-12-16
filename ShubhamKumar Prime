@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num < 2) return false;
+    for (int i = 2; i * i <= num; i++) {
+        if (num % i == 0) return false;
+    }
+    return true;
+}
+
+vector<int> rearrangeArray(vector<int>& arr) {
+    vector<int> primes ;
+   
+   
+    for (int num : arr) {
+        if (isPrime(num)) primes.push_back(num);
+       
+    }
+   
+ 
+    sort(primes.begin(), primes.end(), greater<int>());
+    int n1=primes.size();
+    vector<int>v;
+    int fir=primes[0],sec=primes[n1-1];
+    for(auto it:arr)
+    {
+        if(it == fir || it==sec)
+         continue;
+        else
+         v.push_back(it);
+    }
+    sort(v.begin(), v.end(), greater<int>());
+   
+   
+    vector<int> res;
+    res.push_back(fir);
+    for(auto it :v)
+     res.push_back(it);
+    res.push_back(sec);
+   
+     
+     
+
+    return res;
+}
+
+int main() {
+    vector<int> arr = {5, 1, 8, 11, 2};
+    vector<int> result = rearrangeArray(arr);
+   
+    for (int num : result) {
+        cout << num << " ";
+    }
+    return 0;
+}
